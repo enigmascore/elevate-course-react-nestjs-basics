@@ -1,0 +1,55 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NestJS backend of the Basic React + NestJS course example app",
+  "packageManager": "pnpm@10.16.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --watch -r ts-node/register src/main.ts",
+    "start": "node dist/main.js",
+    "build": "tsc -p tsconfig.build.json",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/database/data-source.ts",
+    "seed": "node -r ts-node/register src/database/seed.ts",
+    "test": "jest",
+    "test:unit": "jest --testPathIgnorePatterns=integration",
+    "test:integration": "jest --testPathPattern=integration --runInBand",
+    "tsc:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nestjs/common": "11.2.3",
+    "@nestjs/config": "4.0.4",
+    "@nestjs/core": "11.2.3",
+    "@nestjs/jwt": "11.0.2",
+    "@nestjs/passport": "11.0.5",
+    "@nestjs/platform-express": "11.2.3",
+    "@nestjs/typeorm": "11.0.3",
+    "bcryptjs": "3.0.3",
+    "class-transformer": "0.5.1",
+    "class-validator": "0.14.4",
+    "nodemailer": "7.0.13",
+    "passport": "0.7.0",
+    "passport-jwt": "4.0.1",
+    "pg": "8.23.0",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2",
+    "typeorm": "0.3.31"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "11.2.3",
+    "@types/express": "5.0.6",
+    "@types/jest": "29.5.14",
+    "@types/node": "24.13.4",
+    "@types/nodemailer": "7.0.12",
+    "@types/passport-jwt": "4.0.1",
+    "@types/supertest": "6.0.3",
+    "jest": "29.7.0",
+    "supertest": "7.2.2",
+    "ts-jest": "29.4.12",
+    "ts-node": "10.9.2",
+    "typescript": "5.9.3"
+  }
+}

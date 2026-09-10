@@ -1,0 +1,17 @@
+{
+  "name": "elevate-course-react-nestjs-basics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Basic React + NestJS course - full-stack example application ( e2e tests live at this level )",
+  "packageManager": "pnpm@10.16.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.1",
+    "@types/node": "24.13.4"
+  }
+}

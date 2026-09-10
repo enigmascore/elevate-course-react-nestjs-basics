@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: blog-postgres
+    environment:
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: blog
+      POSTGRES_DB: blog
+    ports:
+      # host 5433 so a locally installed Postgres on 5432 never clashes
+      - "5433:5432"
+    volumes:
+      - ./docker/postgres-init:/docker-entrypoint-initdb.d
+      - blog-pgdata:/var/lib/postgresql/data
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: blog-mailhog
+    ports:
+      - "1025:1025" # SMTP - the backend sends here
+      - "8025:8025" # HTTP - the web UI and API ( http://localhost:8025 )
+
+volumes:
+  blog-pgdata:

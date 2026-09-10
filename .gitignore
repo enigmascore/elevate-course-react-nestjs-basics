@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+frontend/dist/
+backend/dist/
+
+# test output
+coverage/
+playwright-report/
+test-results/
+
+# environment overrides ( the committed defaults live in the code )
+.env
+.env.local
+
+# editor / OS noise
+.DS_Store
+.idea/
+.vscode/
