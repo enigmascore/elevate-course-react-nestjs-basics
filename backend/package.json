@@ -14,7 +14,7 @@
     "migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/data-source.ts",
     "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/database/data-source.ts",
     "seed": "node -r ts-node/register src/database/seed.ts",
-    "test": "jest",
+    "test": "jest --testPathIgnorePatterns=integration && jest --testPathPattern=integration --runInBand",
     "test:unit": "jest --testPathIgnorePatterns=integration",
     "test:integration": "jest --testPathPattern=integration --runInBand",
     "tsc:check": "tsc --noEmit"

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import * as bcrypt from "bcryptjs";
-import { appDataSource } from "./data-source";
+import appDataSource from "./data-source";
 import { User, UserRole } from "../users/user.entity";
 import { Interest } from "../interests/interest.entity";
 import { Post } from "../posts/post.entity";

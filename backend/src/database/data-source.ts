@@ -25,6 +25,8 @@ export const dataSourceOptions: DataSourceOptions = {
   synchronize: false,
 };
 
-export const appDataSource = new DataSource(dataSourceOptions);
+// exactly ONE DataSource export: the TypeORM CLI ( migration:generate /
+// migration:run ) refuses a file that exports the instance twice
+const appDataSource = new DataSource(dataSourceOptions);
 
 export default appDataSource;
