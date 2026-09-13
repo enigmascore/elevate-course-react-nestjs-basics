@@ -48,6 +48,11 @@ test.describe("my posts", () => {
     await page.getByRole("link", { name: "My posts" }).click();
     await expect(page.getByRole("listitem").first()).toContainText(`E2e post ${runId}`);
 
+    // the list shows the post's excerpt, not just its title
+    await expect(page.getByRole("listitem").first()).toContainText(
+      "Written by the Playwright journey.",
+    );
+
     // edit it
     await page.getByRole("link", { name: `E2e post ${runId}` }).click();
     await page.getByRole("link", { name: "Edit this post" }).click();
@@ -56,6 +61,12 @@ test.describe("my posts", () => {
     await expect(
       page.getByRole("heading", { name: `E2e post ${runId} ( edited )` }),
     ).toBeVisible();
+
+    // open the post FROM the list - "< Back" returns to the list
+    await page.getByRole("link", { name: "My posts" }).click();
+    await page.getByRole("link", { name: `E2e post ${runId} ( edited )` }).click();
+    await page.getByRole("button", { name: "< Back" }).click();
+    await expect(page).toHaveURL(/\/my-posts/);
   });
 
   test("the editor mirrors the backend rules ( empty title is caught locally )", async ({

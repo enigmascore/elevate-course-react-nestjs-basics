@@ -22,7 +22,10 @@ one pull request - its URL is what you submit on the course.
    exactly as it is.
 4. **The feed** - `GET /api/users/me/feed?page=0&size=10`: recent posts
    by everyone YOU follow, newest first, paged ( the join from your
-   follows to their posts is the interesting query ).
+   follows to their posts is the interesting query ). The feed is a
+   READING surface: each card renders the post's author, title, FULL
+   BODY and date inline - never a bare list of titles you must click
+   to read.
 5. **The screens** - a find-people screen ( search + follow/unfollow ),
    a "who I follow" list, and the FEED page - each a routed screen
    using the same stack as the rest of the app ( TanStack Router,
@@ -33,7 +36,8 @@ one pull request - its URL is what you submit on the course.
 ## The tests you write ( following and feed only )
 
 - **unit**: your new screens, MSW-backed - copy the shape of
-  `MyPostsPage.test.tsx`;
+  `MyPostsPage.test.tsx` - including that the feed renders the post
+  BODIES inline;
 - **integration**: the feed contains followed users' posts and NOBODY
   else's; paging is respected; following twice conflicts - copy the
   shape of `backend/test/integration/api.integration.spec.ts`;

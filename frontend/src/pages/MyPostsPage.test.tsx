@@ -16,6 +16,8 @@ describe("MyPostsPage", () => {
 
     expect(await screen.findByText("Seeded post 23")).toBeInTheDocument();
     expect(screen.getByText("Seeded post 14")).toBeInTheDocument();
+    // each card carries an excerpt of the body, not just the title
+    expect(screen.getByText("Body of seeded post 23")).toBeInTheDocument();
     expect(screen.queryByText("Seeded post 13")).not.toBeInTheDocument();
     expect(screen.getByText("Page 1 of 3")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Previous" })).toBeDisabled();

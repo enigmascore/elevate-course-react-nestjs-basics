@@ -5,6 +5,10 @@ import { PagingControls } from "../components/PagingControls";
 
 const PAGE_SIZE = 10;
 
+/** The list shows a taste of each post; the full text lives on its page. */
+const excerpt = (body: string) =>
+  body.length > 140 ? `${body.slice(0, 140).trimEnd()}…` : body;
+
 /**
  * My posts, newest first, PAGED: the page number lives in the URL
  * ( /my-posts?page=2 ) so reload and back/forward keep their place.
@@ -57,6 +61,7 @@ export function MyPostsPage() {
               >
                 {post.title}
               </Link>
+              <p className="mt-1 text-sm text-slate-700">{excerpt(post.body)}</p>
               <p className="mt-1 text-sm text-slate-500">
                 {new Date(post.createdAt).toLocaleString()}
               </p>
