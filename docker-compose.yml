@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:17-alpine
-    container_name: blog-postgres
+    container_name: react-nestjs-basics-postgres
     environment:
       POSTGRES_USER: blog
       POSTGRES_PASSWORD: blog
@@ -11,14 +11,14 @@ services:
       - "5433:5432"
     volumes:
       - ./docker/postgres-init:/docker-entrypoint-initdb.d
-      - blog-pgdata:/var/lib/postgresql/data
+      - react-nestjs-basics-pgdata:/var/lib/postgresql/data
 
   mailhog:
     image: mailhog/mailhog:v1.0.1
-    container_name: blog-mailhog
+    container_name: react-nestjs-basics-mailhog
     ports:
       - "1025:1025" # SMTP - the backend sends here
       - "8025:8025" # HTTP - the web UI and API ( http://localhost:8025 )
 
 volumes:
-  blog-pgdata:
+  react-nestjs-basics-pgdata:
